@@ -1,0 +1,71 @@
+:lang: ja
+
+:includedir: {docdir}/resources
+:imagesdir: {docdir}/resources
+:imagesoutdir: {docdir}/resources
+
+:allow-uri-read:
+:data-uri:
+
+:kroki-server-url: https://kroki.io
+:kroki-fetch-diagram:
+:kroki-plantuml-include-paths: {docdir}/resources
+
+= test for asciidoc + plantuml w/kroki
+
+== test
+docdir = {docdir} +
+kroki-server-url = {kroki-server-url} +
+kroki-plantuml-include-paths = {kroki-plantuml-include-paths} +
+
+=== sample1
+
+[plantuml,format="svg"]
+....
+@startuml
+scale 350 width
+[*] --> NotShooting
+
+state NotShooting {
+  [*] --> Idle
+  Idle --> Configuring : EvConfig
+  Configuring --> Idle : EvConfig
+}
+
+state Configuring {
+  [*] --> NewValueSelection
+  NewValueSelection --> NewValuePreview : EvNewValue
+  NewValuePreview --> NewValueSelection : EvNewValueRejected
+  NewValuePreview --> NewValueSelection : EvNewValueSaved
+
+  state NewValuePreview {
+     State1 -> State2
+  }
+}
+@enduml
+....
+
+=== sample2
+
+[plantuml,format="svg"]
+....
+include::{includedir}/main_1.puml[]
+....
+
+=== sample3
+
+[plantuml,format="svg"]
+....
+include::{includedir}/main_2.puml[]
+....
+
+=== sample4
+
+plantuml::{includedir}/main_2.puml[format="svg"]
+
+=== sample5
+
+[plantuml,format="svg"]
+....
+!include main_2.puml
+....

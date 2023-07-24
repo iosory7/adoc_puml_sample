@@ -1,0 +1,11 @@
+@startuml
+state NotShooting
+  !include sub_a.puml
+
+state Configuring
+  !include sub_b.puml
+
+scale 350 width
+[*] --> NotShooting
+
+@enduml

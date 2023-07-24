@@ -1,0 +1,22 @@
+{
+    //"asciidoc.asciidoctor_command": "asciidoctor -r asciidoctor-diagram -a includedir=resources",
+    "asciidoc.editor.enableDrop": false,
+    "asciidoc.pdf.asciidoctorPdfCommandPath": "/usr/local/bin/asciidoctor-pdf",
+    "asciidoc.pdf.asciidoctorPdfCommandArgs": [
+        "-r",
+        "asciidoctor-diagram",
+        "-a",
+        "script=cjk",
+        "-a",
+        "allow-uri-read",
+        "-a",
+        "plantuml-includedir=resources",
+        "-a",
+        "imagesdir=resources",
+        "-a",
+        "imagesoutdir=resources",
+    ],
+    "asciidoc.extensions.enableKroki": true,
+    "asciidoc.useWorkspaceRootAsBaseDirectory": true,
+    //"asciidoc.debug.trace": "verbose",
+}
