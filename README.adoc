@@ -11,7 +11,7 @@
 :kroki-fetch-diagram:
 :kroki-plantuml-include-paths: {docdir}/resources
 
-= test for asciidoc + plantuml w/kroki
+= test for asciidoctor.js + plantuml w/kroki
 
 == test
 docdir = {docdir} +
@@ -22,50 +22,16 @@ kroki-plantuml-include-paths = {kroki-plantuml-include-paths} +
 
 [plantuml,format="svg"]
 ....
-@startuml
-scale 350 width
-[*] --> NotShooting
-
-state NotShooting {
-  [*] --> Idle
-  Idle --> Configuring : EvConfig
-  Configuring --> Idle : EvConfig
-}
-
-state Configuring {
-  [*] --> NewValueSelection
-  NewValueSelection --> NewValuePreview : EvNewValue
-  NewValuePreview --> NewValueSelection : EvNewValueRejected
-  NewValuePreview --> NewValueSelection : EvNewValueSaved
-
-  state NewValuePreview {
-     State1 -> State2
-  }
-}
-@enduml
+include::{includedir}/main.puml[]
 ....
 
 === sample2
 
-[plantuml,format="svg"]
-....
-include::{includedir}/main_1.puml[]
-....
+plantuml::{includedir}/main.puml[format="svg"]
 
 === sample3
 
 [plantuml,format="svg"]
 ....
-include::{includedir}/main_2.puml[]
-....
-
-=== sample4
-
-plantuml::{includedir}/main_2.puml[format="svg"]
-
-=== sample5
-
-[plantuml,format="svg"]
-....
-!include main_2.puml
+!include main.puml
 ....
